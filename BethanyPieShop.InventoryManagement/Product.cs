@@ -51,9 +51,28 @@ namespace BethanyPieShop.InventoryManagement
         public int AmountInStock { get; private set; }
         public bool IsBelowStockTreshold { get; private set; }
 
-        public Product(int id, string name) {
+        public Product(int id) : this(id, string.Empty)
+        {
+        }
+
+
+        public Product(int id, string name)
+        {
             Id = id;
             Name = name;
+        }
+
+        //ToDo: add Price
+        public Product(int id, string name, string? description, UnitType unitType, int maxAmountInStock)
+        {
+            Id = id;
+            Name = name;
+            Description = description;
+            UnitType = unitType;
+
+            maxItemsInStock = maxAmountInStock;
+
+            UpdateLowStock();
         }
 
 
@@ -80,6 +99,27 @@ namespace BethanyPieShop.InventoryManagement
         {
             AmountInStock++;
         }
+
+        public void IncreaseStock(int amount)
+        {
+            int newStock = AmountInStock + amount;
+
+            if (newStock <= maxItemsInStock)
+            {
+                AmountInStock += amount;
+            }
+            else
+            {
+                AmountInStock = maxItemsInStock;//we only store the possible items, overstock isn't stored
+                Log($"{CreateSimpleProductRepresentation} stock overflow. {newStock - AmountInStock} item(s) ordere that couldn't be stored.");
+            }
+
+            if (AmountInStock > 10)
+            {
+                IsBelowStockTreshold = false;
+            }
+        }
+
 
         private void DecreaseStock(int items, string reason)
         {
@@ -116,6 +156,24 @@ namespace BethanyPieShop.InventoryManagement
 
             return sb.ToString();
 
+            // return DisplayDetailsFull("");
+
+        }
+
+        public string DisplayDetailsFull(string extraDetails)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append($"{Id} {Name} \n{Description}\n{AmountInStock} item(s) in stock");
+
+            sb.Append(extraDetails);
+
+            if (IsBelowStockTreshold)
+            {
+                sb.Append("\n!!STOCK LOW!!");
+            }
+
+            return sb.ToString();
         }
 
         private void UpdateLowStock()
