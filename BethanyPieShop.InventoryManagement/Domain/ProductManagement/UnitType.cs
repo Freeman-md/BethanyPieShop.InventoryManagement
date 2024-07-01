@@ -1,5 +1,5 @@
 ﻿using System;
-namespace BethanyPieShop.InventoryManagement
+namespace BethanyPieShop.InventoryManagement.Domain.ProductManagement
 {
 	public enum UnitType
 	{
