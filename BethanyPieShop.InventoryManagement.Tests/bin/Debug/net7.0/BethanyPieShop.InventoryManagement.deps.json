@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "BethanyPieShop.InventoryManagement/1.0.0": {
+        "runtime": {
+          "BethanyPieShop.InventoryManagement.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "BethanyPieShop.InventoryManagement/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
