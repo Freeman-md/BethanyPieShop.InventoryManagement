@@ -2,6 +2,8 @@
 using BethanysPieShop.InventoryManagement.Domain.General;
 using BethanysPieShop.InventoryManagement.Domain.ProductManagement;
 
+Product.ChangeStockThreshold(10);
+
 Price samplePrice = new Price() { ItemPrice = 10, Currency = Currency.Euro};
 Product p1 = new Product(1, "Sugar", "Lorem ipsum", samplePrice, UnitType.PerKg, 100);
 
@@ -9,6 +11,8 @@ p1.IncreaseStock();
 p1.Description = "Sample Description";
 
 var p2 = new Product(2, "Cake decorations", "Lorem ipsum", new Price() { ItemPrice = 8, Currency = Currency.Euro }, UnitType.PerItem, 20);
+p2.Description = "Another Description";
+
 Product p3 = new (3, "Strawberry", "Lorem ipsum", new Price() { ItemPrice = 3, Currency = Currency.Euro }, UnitType.PerBox, 10);
 
 
