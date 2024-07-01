@@ -1,4 +1,20 @@
-﻿PrintWelcome();
+﻿using BethanyPieShop.InventoryManagement.Domain.ProductManagement;
+using BethanysPieShop.InventoryManagement.Domain.General;
+using BethanysPieShop.InventoryManagement.Domain.ProductManagement;
+
+Price samplePrice = new Price(10, Currency.Euro);
+Product p1 = new Product(1, "Sugar", "Lorem ipsum", samplePrice, UnitType.PerKg, 100);
+
+p1.IncreaseStock();
+p1.Description = "Sample Description";
+
+var p2 = new Product(2, "Cake decorations", "Lorem ipsum", samplePrice, UnitType.PerItem, 20);
+
+Product p3 = new (3, "Strawberry", "Lorem ipsum", samplePrice, UnitType.PerBox, 10);
+
+
+
+PrintWelcome();
 
 
 #region Layout
