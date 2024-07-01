@@ -2,15 +2,14 @@
 using BethanysPieShop.InventoryManagement.Domain.General;
 using BethanysPieShop.InventoryManagement.Domain.ProductManagement;
 
-Price samplePrice = new Price(10, Currency.Euro);
+Price samplePrice = new Price() { ItemPrice = 10, Currency = Currency.Euro};
 Product p1 = new Product(1, "Sugar", "Lorem ipsum", samplePrice, UnitType.PerKg, 100);
 
 p1.IncreaseStock();
 p1.Description = "Sample Description";
 
-var p2 = new Product(2, "Cake decorations", "Lorem ipsum", samplePrice, UnitType.PerItem, 20);
-
-Product p3 = new (3, "Strawberry", "Lorem ipsum", samplePrice, UnitType.PerBox, 10);
+var p2 = new Product(2, "Cake decorations", "Lorem ipsum", new Price() { ItemPrice = 8, Currency = Currency.Euro }, UnitType.PerItem, 20);
+Product p3 = new (3, "Strawberry", "Lorem ipsum", new Price() { ItemPrice = 3, Currency = Currency.Euro }, UnitType.PerBox, 10);
 
 
 
